@@ -1,0 +1,13 @@
+F:\.NET\MVCLogin\Hospital\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.deps.json
+F:\.NET\MVCLogin\Hospital\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.runtimeconfig.json
+F:\.NET\MVCLogin\Hospital\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.runtimeconfig.dev.json
+F:\.NET\MVCLogin\Hospital\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.dll
+F:\.NET\MVCLogin\Hospital\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.pdb
+F:\.NET\MVCLogin\Hospital\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.csproj.AssemblyReference.cache
+F:\.NET\MVCLogin\Hospital\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+F:\.NET\MVCLogin\Hospital\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.AssemblyInfoInputs.cache
+F:\.NET\MVCLogin\Hospital\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.AssemblyInfo.cs
+F:\.NET\MVCLogin\Hospital\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.csproj.CoreCompileInputs.cache
+F:\.NET\MVCLogin\Hospital\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.dll
+F:\.NET\MVCLogin\Hospital\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.pdb
+F:\.NET\MVCLogin\Hospital\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.genruntimeconfig.cache
