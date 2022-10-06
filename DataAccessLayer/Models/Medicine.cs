@@ -8,6 +8,7 @@ namespace DataAccessLayer.Models
     public class Medicine
     {
       [Key]
+      [Required]
       public string Name { get; set; }
 
       [Required]

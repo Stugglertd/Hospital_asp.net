@@ -27,5 +27,62 @@ namespace DataAccessLayer
           }
           return Lst;
         }
+        public bool AddMedicine(Medicine medicine)
+        {
+            try
+            {
+                context.Add(medicine);
+                context.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool UpdateMedicine(string medicineName,int medicineStrength)
+        {
+            try
+            {
+                Medicine medicine = context.medicines.Find(medicineName);
+                
+                if (medicine == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    medicine.Strength = medicineStrength;
+                    context.Update(medicine);
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool DeleteMedicine(string medicineName)
+        {
+            try
+            {
+                Medicine medicine = context.medicines.Find(medicineName);
+                if(medicine == null)
+                {
+                    return false;
+                }
+                else
+                {
+                  context.Remove(medicine);
+                  context.SaveChanges();
+                  return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
