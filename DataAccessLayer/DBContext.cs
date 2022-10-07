@@ -17,5 +17,6 @@ namespace DataAccessLayer
         }
 
         public DbSet<Medicine> medicines { get; set; }
+        public DbSet<Patient> patients { get; set; }
     }
 }

@@ -13,6 +13,8 @@ namespace DataAccessLayer
         {
           context = new DBContext();
         }
+
+        #region Medicine
         public List<Medicine> GetAllMedicine()
         {
             List<Medicine> Lst;
@@ -82,6 +84,39 @@ namespace DataAccessLayer
             catch
             {
                 return false;
+            }
+        }
+        #endregion
+    
+        public List<Patient> GetAllPatients()
+        {
+            List<Patient> patients;
+            try
+            {
+              patients = (from p in context.patients
+                          select p).ToList();
+            }
+            catch
+            {
+              patients = null;
+            }
+            //foreach(Patient patient in patients)
+            //{
+            //  Console.WriteLine(patient.Name);
+            //}
+            return patients;
+        }
+        public bool AddPatient(Patient patient)
+        {
+            try
+            {
+              context.patients.Add(patient);
+              context.SaveChanges();
+              return true;
+            }
+            catch
+            {
+              return false;
             }
         }
     }
