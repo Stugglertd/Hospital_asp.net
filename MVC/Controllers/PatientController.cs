@@ -38,8 +38,8 @@ namespace MVC.Controllers
               bool status = repo.AddPatient(patient);
               if (status)
               {
-                    return Json("Success");
-              }
+                    return RedirectToAction("ViewPatientProfile", patient);
+                }
               else
               {
                     return Json("Error in Adding Patient");
@@ -50,9 +50,35 @@ namespace MVC.Controllers
                 return Json("Exception in Adding Patient");
             }
         }
-        public IActionResult ViewProfile(Patient patient)
+        public IActionResult ViewPatientProfile(Patient patient)
         {
-          return Json(patient);
+          return View(patient);
+        }
+        public IActionResult UpdatePatient(string phoneNumber)
+        {
+            Patient pat = repo.GetPatient(phoneNumber);
+            return View(pat);
+        }
+        [HttpPost]
+        public IActionResult SaveUpdatePatient(Patient patient)
+        {
+            try
+            {
+                bool status = 
+                 repo.UpdatePatient(patient.PhoneNumber,patient.Name,patient.Age,patient.Email,patient.Address);
+                if(status)
+                {
+                    return RedirectToAction("ViewPatientProfile",patient);
+                }
+                else
+                {
+                    return Json("Error in Updating Patient");
+                }
+            }
+            catch
+            {
+                return Json("Exception in Updating Patient");
+            }
         }
     }
 }

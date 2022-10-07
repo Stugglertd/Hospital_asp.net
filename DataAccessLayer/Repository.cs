@@ -100,10 +100,6 @@ namespace DataAccessLayer
             {
               patients = null;
             }
-            //foreach(Patient patient in patients)
-            //{
-            //  Console.WriteLine(patient.Name);
-            //}
             return patients;
         }
         public bool AddPatient(Patient patient)
@@ -117,6 +113,45 @@ namespace DataAccessLayer
             catch
             {
               return false;
+            }
+        }
+        public Patient GetPatient(string phoneNumber)
+        {
+          Patient patient;
+          try
+          {
+            patient = context.patients.Find(phoneNumber);
+          }
+          catch
+          {
+            patient = null;
+          }
+          return patient;
+        }
+        public bool UpdatePatient(string phoneNumber,string Name,int Age,string Email,string Address)
+        {
+            Patient patient;
+            try
+            {
+              patient = context.patients.Find(phoneNumber);
+              if(patient == null)
+              {
+                return false;
+              }
+              else
+              {
+                patient.Name = Name;
+                patient.Age = Age;
+                patient.Email = Email;
+                patient.Address = Address;
+                context.Update(patient);
+                context.SaveChanges();
+                return true;
+              }
+            }
+            catch
+            {
+                return false;
             }
         }
     }
