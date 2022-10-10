@@ -7,6 +7,10 @@ namespace DataAccessLayer.Models
 {
     public class Patient
     {
+      //public Patient()
+      //{
+      //  prescription = new List<Prescription>();      
+      //}
       [Key]
       [DataType(DataType.PhoneNumber)]
       [Display(Name = "Phone Number")]
@@ -28,5 +32,7 @@ namespace DataAccessLayer.Models
 
       [Required]
       public string Address { get; set; }
+
+      //public List<Prescription> prescription { get; set; }
     }
 }

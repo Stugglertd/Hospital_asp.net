@@ -15,7 +15,7 @@ namespace MVC.Controllers
 
         public IActionResult GetAllPatients()
         {
-            List<Patient> pat;
+            List<Patient> pat = new List<Patient>();
             try
             {
               pat = repo.GetAllPatients();
@@ -39,7 +39,7 @@ namespace MVC.Controllers
               if (status)
               {
                     return RedirectToAction("ViewPatientProfile", patient);
-                }
+              }
               else
               {
                     return Json("Error in Adding Patient");

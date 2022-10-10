@@ -44,5 +44,6 @@
 <div>
     @*,Name=Model.Name,Age=Model.Age,Email=Model.Email,Address=Model.Address*@
     @Html.ActionLink("UpdatePatient","UpdatePatient",new {Model.PhoneNumber}) |
+    @Html.ActionLink("AddPrescription","AddPrescription","Prescription",new {Model.PhoneNumber}) |
     <a asp-action="GetAllPatients">Back to Patient List</a>
 </div>

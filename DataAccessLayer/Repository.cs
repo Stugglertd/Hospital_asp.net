@@ -29,6 +29,20 @@ namespace DataAccessLayer
           }
           return Lst;
         }
+        public List<string> GetMedicineNameList()
+        {
+            List<string> Lst;
+            try
+            {
+              Lst = ( from Med in context.medicines
+                      select Med.Name).ToList();
+            }
+            catch
+            {
+                Lst = null;
+            }
+            return Lst;
+        }
         public bool AddMedicine(Medicine medicine)
         {
             try
@@ -154,5 +168,8 @@ namespace DataAccessLayer
                 return false;
             }
         }
+    
+    
+        
     }
 }
