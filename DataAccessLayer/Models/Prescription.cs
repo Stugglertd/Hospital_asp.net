@@ -16,14 +16,19 @@ namespace DataAccessLayer.Models
       [Required]
       public int Id { get; set; }
       
+      //[Required]
+      //public Medicine Medicine { get; set; }
       [Required]
-      public Medicine Medicine { get; set; }
+      public string MedicineName { get; set; }
 
       //[ForeignKey("Patient")]
       //public string PhoneNumber { get; set; }
-      [Required]
-      public Patient Patient { get; set; }
+      //[Required]
+      //public Patient Patient { get; set; }
       
+      [Required]
+      public string PatientPhone { get; set; }
+
       [Required]
       public DateTime DateTime { get; set; }
     }

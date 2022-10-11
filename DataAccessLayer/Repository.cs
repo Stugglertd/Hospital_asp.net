@@ -168,8 +168,42 @@ namespace DataAccessLayer
                 return false;
             }
         }
-    
-    
-        
+
+
+        public bool AddPrescription(string medicineName, string phoneNumber)
+        {
+            try
+            {
+                Prescription prescription = new Prescription();
+                prescription.MedicineName = medicineName;
+                prescription.PatientPhone = phoneNumber;
+                prescription.DateTime = DateTime.Now;
+
+                context.prescriptions.Add(prescription);
+                context.SaveChanges();
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                var temp = ex.InnerException;
+                return false;
+            }
+        }
+        public List<DateTime> GetAllDates()
+        {
+            List<DateTime> dates = new List<DateTime>();
+            try
+            {
+                dates = (from dt in context.prescriptions
+                         select dt.DateTime.Date).ToList();
+                dates = dates.Distinct().ToList();
+            }
+            catch
+            {
+                dates = null;
+            }
+            return dates;
+        } 
     }
 }

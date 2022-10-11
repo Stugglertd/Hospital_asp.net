@@ -23,10 +23,27 @@ namespace MVC.Controllers
             ViewBag.Phone = PhoneNumber;
             return View();
         }
-        
+
         public IActionResult SaveAddPrescription(Prescription prescription)
         {
-            return Json(prescription.Medicine.Name + " " + );
+            //return Json(prescription.MedicineName + " " + prescription.PatientPhone);
+            try
+            {
+                bool status = repo.AddPrescription(prescription.MedicineName, prescription.PatientPhone);
+                if (status)
+                {
+                    Patient patient = repo.GetPatient(prescription.PatientPhone);
+                    return RedirectToAction("ViewPatientProfile", "Patient", patient);
+                }
+                else
+                {
+                    return Json("Error in Adding Prescription");
+                }
+            }
+            catch
+            {
+                return Json("Exception in Adding Prescription");
+            }
         }
     }
 }

@@ -34,5 +34,6 @@ namespace DataAccessLayer.Models
       public string Address { get; set; }
 
       //public List<Prescription> prescription { get; set; }
+     
     }
 }

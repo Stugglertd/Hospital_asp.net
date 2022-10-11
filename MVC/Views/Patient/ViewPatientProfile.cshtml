@@ -47,3 +47,28 @@
     @Html.ActionLink("AddPrescription","AddPrescription","Prescription",new {Model.PhoneNumber}) |
     <a asp-action="GetAllPatients">Back to Patient List</a>
 </div>
+
+<br />
+<br/>
+
+<table class="table">
+ <thead>
+     <tr>
+       <th>Date</th>
+     </tr>
+ </thead>
+ <tbody>
+        @{
+         var presDates = (List<string>) ViewBag.dateList; // Cast the list
+        }
+
+        @foreach (var item in presDates)
+        {
+          <tr>
+           <td>
+               @Html.DisplayFor(modelItem => item)
+           </td>
+          </tr>  
+        }
+    </tbody>
+</table>

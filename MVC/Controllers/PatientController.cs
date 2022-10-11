@@ -1,6 +1,7 @@
 ﻿using DataAccessLayer;
 using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 namespace MVC.Controllers
@@ -52,7 +53,17 @@ namespace MVC.Controllers
         }
         public IActionResult ViewPatientProfile(Patient patient)
         {
-          return View(patient);
+          
+            List<DateTime> dateList = repo.GetAllDates();
+            List<string> dateListStr = new List<string>();
+
+            foreach (var dt in dateList)
+            {
+                dateListStr.Add(dt.Date.ToString("dd/MM/yyyy"));    
+            }
+
+            ViewBag.dateList = dateListStr;
+            return View(patient);
         }
         public IActionResult UpdatePatient(string phoneNumber)
         {
