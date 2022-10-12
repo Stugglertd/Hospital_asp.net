@@ -6,8 +6,54 @@
 
 <h1>AddPrescription</h1>
 
-<h4>Prescription</h4>
 <hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.MedicineName)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.PatientPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateTime)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            List<DataAccessLayer.Models.Prescription> Med = (List<DataAccessLayer.Models.Prescription>)@ViewBag.pres;
+        }
+    @foreach (var item in Med) {
+        <tr>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>*@
+            <td>
+              @Html.DisplayFor(modelItem => item.MedicineName)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.PatientPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTime)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>*@
+        </tr>
+}
+    </tbody>
+</table>
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="SaveAddPrescription">
@@ -32,14 +78,19 @@
             <input type="hidden" name="PatientPhone" value="@ViewBag.Phone" />
 
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Add" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
+@{
+    DataAccessLayer.Models.Patient patient = (DataAccessLayer.Models.Patient)@ViewBag.Patient;
+}
+
 <div>
-    <a asp-action="Index">Back to List</a>
+    @*<a asp-controller="Patient" asp-action="ViewPatientProfile" asp-route-patient=patient >Back to Patient Profile</a>*@
+    @Html.ActionLink("Back to Patient Profile", "ViewPatientProfile","Patient", patient)
 </div>
 
 @section Scripts {

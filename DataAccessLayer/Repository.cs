@@ -190,13 +190,14 @@ namespace DataAccessLayer
                 return false;
             }
         }
-        public List<DateTime> GetAllDates()
+        public List<DateTime> GetAllDates(string patientPhone)
         {
             List<DateTime> dates = new List<DateTime>();
             try
             {
-                dates = (from dt in context.prescriptions
-                         select dt.DateTime.Date).ToList();
+                dates = (from pres in context.prescriptions
+                         where pres.PatientPhone == patientPhone
+                         select pres.DateTime.Date).ToList();
                 dates = dates.Distinct().ToList();
             }
             catch
@@ -205,5 +206,39 @@ namespace DataAccessLayer
             }
             return dates;
         } 
+        public List<Prescription> ShowPresOfSpecificDate(string patientPh, string Date)
+        {
+          List<Prescription> prescriptions = new List<Prescription>();
+          try
+          {
+            DateTime date = Convert.ToDateTime(Date);
+            prescriptions = (from pres in context.prescriptions
+                                 where pres.DateTime.Date == date
+                                 && pres.PatientPhone == patientPh
+                                 select pres).ToList();
+          }
+          catch
+          {
+            prescriptions = null;
+          }
+          return prescriptions;
+        }
+
+        public List<Prescription> TodaysPres(string patientPh)
+        {
+            List<Prescription> prescriptions = new List<Prescription>();
+            try
+            {
+                prescriptions = (from pres in context.prescriptions
+                                 where pres.DateTime.Date == DateTime.Now.Date
+                                 && pres.PatientPhone == patientPh
+                                 select pres).ToList();
+            }
+            catch
+            {
+                prescriptions = null;
+            }
+            return prescriptions;
+        }
     }
 }

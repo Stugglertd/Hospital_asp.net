@@ -54,7 +54,7 @@ namespace MVC.Controllers
         public IActionResult ViewPatientProfile(Patient patient)
         {
           
-            List<DateTime> dateList = repo.GetAllDates();
+            List<DateTime> dateList = repo.GetAllDates(patient.PhoneNumber);
             List<string> dateListStr = new List<string>();
 
             foreach (var dt in dateList)
@@ -63,11 +63,14 @@ namespace MVC.Controllers
             }
 
             ViewBag.dateList = dateListStr;
+            ViewBag.phone = patient.PhoneNumber;
+            
             return View(patient);
         }
         public IActionResult UpdatePatient(string phoneNumber)
         {
             Patient pat = repo.GetPatient(phoneNumber);
+            ViewBag.Patient = pat;
             return View(pat);
         }
         [HttpPost]

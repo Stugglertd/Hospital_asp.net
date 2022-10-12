@@ -21,6 +21,8 @@ namespace MVC.Controllers
 
             ViewBag.Medicine = new SelectList(dBContext.medicines,"Name", "Name");
             ViewBag.Phone = PhoneNumber;
+            ViewBag.Pres = repo.TodaysPres(PhoneNumber);
+            ViewBag.Patient = repo.GetPatient(PhoneNumber);
             return View();
         }
 
@@ -32,8 +34,9 @@ namespace MVC.Controllers
                 bool status = repo.AddPrescription(prescription.MedicineName, prescription.PatientPhone);
                 if (status)
                 {
-                    Patient patient = repo.GetPatient(prescription.PatientPhone);
-                    return RedirectToAction("ViewPatientProfile", "Patient", patient);
+                    //Patient patient = repo.GetPatient(prescription.PatientPhone);
+                    //return RedirectToAction("ViewPatientProfile", "Patient", patient);
+                    return RedirectToAction("AddPrescription",new { PhoneNumber=prescription.PatientPhone });
                 }
                 else
                 {
@@ -44,6 +47,15 @@ namespace MVC.Controllers
             {
                 return Json("Exception in Adding Prescription");
             }
+        }
+    
+        public IActionResult ShowPresOfSpecificDate(string patientPh,string Date)
+        {
+            List<Prescription> prescriptions = new List<Prescription>();
+            prescriptions = repo.ShowPresOfSpecificDate(patientPh, Date);
+
+            return View(prescriptions); 
+            //return Json(patientPh + " " + Date);
         }
     }
 }

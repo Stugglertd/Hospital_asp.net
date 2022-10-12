@@ -43,8 +43,12 @@
     </div>
 </div>
 
+@{
+    DataAccessLayer.Models.Patient patient = (DataAccessLayer.Models.Patient)@ViewBag.Patient;
+}
 <div>
-    <a asp-action="GetAllPatients">Back to Patient</a>
+    @*<a asp-action="GetAllPatients">Back to Patient</a>*@
+    @Html.ActionLink("Back to Patient Profile", "ViewPatientProfile","Patient", patient)
 </div>
 
 @section Scripts {

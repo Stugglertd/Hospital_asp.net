@@ -60,6 +60,7 @@
  <tbody>
         @{
          var presDates = (List<string>) ViewBag.dateList; // Cast the list
+         var phone = (string) ViewBag.phone;
         }
 
         @foreach (var item in presDates)
@@ -67,6 +68,9 @@
           <tr>
            <td>
                @Html.DisplayFor(modelItem => item)
+           </td>
+           <td>
+               @Html.ActionLink("Show Pres","ShowPresOfSpecificDate","Prescription",new {patientPh=phone,Date=item})
            </td>
           </tr>  
         }
